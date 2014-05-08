@@ -6,9 +6,11 @@
 
 
 <template name="newThemeInput">
-	<div class="form-group">
-		<label for="newTheme"></label>
-		<input type="text" class="form-control" id="newTheme" name="newTheme" />
+	<div class="input-group" id="newThemeContainer">
+		<input type="text" class="form-control" id="newTheme" />
+		<span class="input-group-btn">
+			<button type="button" class="btn btn-default" id="addTheme">Add New Theme</button>
+		</span>
 	</div>
 </template>
 
@@ -21,5 +23,7 @@
 
 
 <template name="themeItem">
-
+	{{votes}}
+	<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Vote for this theme" id="voteForTheme"><i class="glyphicon glyphicon-plus"></i></button>
+	{{theme}}
 </template>

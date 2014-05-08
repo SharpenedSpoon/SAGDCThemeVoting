@@ -10,8 +10,9 @@
 /*
  * Themes
  *
- * Schema version 1
+ * Schema version 2
  *   theme     : string
+ *   username  : string
  *   (themeId) : int [[automatic]]
  */
 Themes = new Meteor.Collection('themes');
@@ -29,9 +30,9 @@ Themes.softRemovable();
  *   (voteId) : int [[automatic]]
  */
 Votes = new Meteor.Collection('votes');
-Themes.timestampable();
-Themes.autoIncrementable('voteId');
-Themes.softRemovable();
+Votes.timestampable();
+Votes.autoIncrementable('voteId');
+Votes.softRemovable();
 
 
 /*
@@ -44,9 +45,9 @@ Themes.softRemovable();
 *   (commentId) : int [[automatic]]
 */
 Comments = new Meteor.Collection('comments');
-Themes.timestampable();
-Themes.autoIncrementable('commentId');
-Themes.softRemovable();
+Comments.timestampable();
+Comments.autoIncrementable('commentId');
+Comments.softRemovable();
 
 
 // subscribe to all of the things
@@ -55,3 +56,28 @@ Meteor.subscribe('votes');
 Meteor.subscribe('comments');
 Meteor.subscribe('users');
 Meteor.subscribe('userPresence');
+
+
+/*
+ * Set up the rules for when users can do
+ * CRUD methods on collections
+ */
+Themes.allow({
+    insert: function() {
+        return true;
+    }
+});
+
+Votes.allow({
+    insert: function(userId, doc) {
+        // user must be logged in, doc must be owned by the user
+        return (userId && doc.owner == userId);
+    }
+});
+
+Comments.allow({
+    insert: function(userId, doc) {
+        // user must be logged in, doc must be owned by the user
+        return (userId && doc.owner == userId);
+    }
+});

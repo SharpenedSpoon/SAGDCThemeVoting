@@ -2,12 +2,12 @@
 	<title>SAGDC Voting</title>
 </head>
 <body>
-	{{> loginButtons}}
+	{{> navigation}}
 
 	{{#if currentUser}}
 		{{> themesContainer}}
 	{{else}}
-		{{#if logginIn}}
+		{{#if loggingIn}}
 			<h1>Please wait, logging you in...</h1>
 		{{else}}
 			<h1>Please log in!</h1>
