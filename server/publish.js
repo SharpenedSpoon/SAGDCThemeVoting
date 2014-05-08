@@ -1,14 +1,26 @@
 
 Themes = new Meteor.Collection('themes');
+Votes = new Meteor.Collection('votes');
+Comments = new Meteor.Collection('comments');
+
+
 Meteor.publish('themes', function() {
 	return Themes.find();
 });
+Meteor.publish('votes', function() {
+	return Votes.find();
+});
+Meteor.publish('comments', function() {
+	return Comments.find();
+});
+
 
 
 // TODO this is not a secure way to do this!
 Meteor.publish('users', function() {
 	return Meteor.users.find();
 });
+
 
 
 Meteor.publish('userPresence', function() {
