@@ -8,3 +8,8 @@ mrt add bootstrap-3
 mrt add sass
 mrt add presence
 mrt add accounts-ui-bootstrap-3
+mrt add collection-behaviours      https://atmospherejs.com/package/collection-behaviours
+
+
+meteor remove autopublish
+meteor remove insecure

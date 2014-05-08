@@ -1,0 +1,16 @@
+<head>
+	<title>SAGDC Voting</title>
+</head>
+<body>
+	{{> loginButtons}}
+
+	{{#if currentUser}}
+		{{> themesContainer}}
+	{{else}}
+		{{#if logginIn}}
+			<h1>Please wait, logging you in...</h1>
+		{{else}}
+			<h1>Please log in!</h1>
+		{{/if}}
+	{{/if}}
+</body>
