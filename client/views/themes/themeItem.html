@@ -1,15 +1,20 @@
 <template name="themeItem">
 
-	<div class="theme-item">
+	<div class="theme-item well well-sm">
 		<div class="theme">
-			{{theme}}
+			{{#if userHasNotYetVoted}}
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-plus-sign vote" id="voteForTheme" title="Vote for this theme"></span>
+				</h4>
+			{{/if}}
+			<h4 class="theme-name pull-left">{{theme}}</h4>
+			<h6 class="pull-right">{{username}}</h6>
 		</div>
+		<div class="clear"></div>
+
+
 
 		<div class="theme-extras">
-
-			{{#if userHasNotYetVoted}}
-				<span class="glyphicon glyphicon-plus-sign" id="voteForTheme" title="Vote for this theme"></span>
-			{{/if}}
 
 			<details class="votes-list">
 				<summary>Votes: {{voteCount}}</summary>
