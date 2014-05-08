@@ -23,7 +23,34 @@
 
 
 <template name="themeItem">
-	{{votes}}
-	<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Vote for this theme" id="voteForTheme"><i class="glyphicon glyphicon-plus"></i></button>
-	{{theme}}
+
+	<button type="button" class="btn btn-primary" title="Vote for this theme" id="voteForTheme"><i class="glyphicon glyphicon-plus"></i></button>
+
+	<div class="votes-list">
+		<h6>Votes: {{voteCount}}</h6>
+		{{#if voteCount}}
+			<ul>
+				{{#each votes}}
+					<li>{{username}}</li>
+				{{/each}}
+			</ul>
+		{{/if}}
+	</div>
+
+	<div class="theme">
+		{{theme}}
+	</div>
+
+	<div class="comments-list">
+		<h6>Comments: {{commentCount}}</h6>
+		{{#if commentCount}}
+			<dl>
+				{{#each comments}}
+					<dt>{{username}}</dt>
+					<dd>{{comment}}</dd>
+				{{/each}}
+			</dl>
+		{{/if}}
+		{{> newComment}}
+	</div>
 </template>

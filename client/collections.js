@@ -24,9 +24,10 @@ Themes.softRemovable();
 /*
  * Votes
  *
- * Schema version 1
+ * Schema version 2
  *   username : string
  *   value    : int
+ *   themeId  : int
  *   (voteId) : int [[automatic]]
  */
 Votes = new Meteor.Collection('votes');

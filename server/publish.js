@@ -1,7 +1,18 @@
 
 Themes = new Meteor.Collection('themes');
+Themes.timestampable();
+Themes.autoIncrementable('themeId');
+Themes.softRemovable();
+
 Votes = new Meteor.Collection('votes');
+Votes.timestampable();
+Votes.autoIncrementable('voteId');
+Votes.softRemovable();
+
 Comments = new Meteor.Collection('comments');
+Comments.timestampable();
+Comments.autoIncrementable('commentId');
+Comments.softRemovable();
 
 
 Meteor.publish('themes', function() {
