@@ -24,33 +24,40 @@
 
 <template name="themeItem">
 
-	<button type="button" class="btn btn-primary" title="Vote for this theme" id="voteForTheme"><i class="glyphicon glyphicon-plus"></i></button>
+	<div class="theme-item">
+		<div class="theme">
+			{{theme}}
+		</div>
 
-	<div class="votes-list">
-		<h6>Votes: {{voteCount}}</h6>
-		{{#if voteCount}}
-			<ul>
-				{{#each votes}}
-					<li>{{username}}</li>
-				{{/each}}
-			</ul>
-		{{/if}}
-	</div>
+		<div class="theme-extras">
 
-	<div class="theme">
-		{{theme}}
-	</div>
+			{{#if userHasNotYetVoted}}
+				<span class="glyphicon glyphicon-plus-sign" id="voteForTheme" title="Vote for this theme"></span>
+			{{/if}}
 
-	<div class="comments-list">
-		<h6>Comments: {{commentCount}}</h6>
-		{{#if commentCount}}
-			<dl>
-				{{#each comments}}
-					<dt>{{username}}</dt>
-					<dd>{{comment}}</dd>
-				{{/each}}
-			</dl>
-		{{/if}}
-		{{> newComment}}
+			<details class="votes-list">
+				<summary>Votes: {{voteCount}}</summary>
+				{{#if voteCount}}
+					<ul>
+						{{#each votes}}
+							<li>{{username}}</li>
+						{{/each}}
+					</ul>
+				{{/if}}
+			</details>
+
+			<details class="comments-list">
+				<summary>Comments: {{commentCount}}</summary>
+				{{> newComment}}
+				{{#if commentCount}}
+					<dl>
+						{{#each comments}}
+							<dt>{{username}} - <span data-livestamp="{{createdAt}}"></span></dt>
+							<dd>{{comment}}</dd>
+						{{/each}}
+					</dl>
+				{{/if}}
+			</details>
+		</div>
 	</div>
 </template>

@@ -20,6 +20,11 @@ Template.themeItem.events {
 
 
 Template.themeItem.helpers {
+	userHasNotYetVoted: () ->
+		return (! Votes.findOne({
+			themeId: this.themeId,
+			username: Meteor.user().username
+		}))
 	voteCount: () ->
 		return Votes.find({ themeId: this.themeId }).fetch().length
 	votes: () ->
@@ -27,7 +32,9 @@ Template.themeItem.helpers {
 	commentCount: () ->
 		return Comments.find({ themeId: this.themeId }).fetch().length
 	comments: () ->
-		return Comments.find({ themeId: this.themeId }, {commentId: -1})
+		return Comments.find({ themeId: this.themeId }, {commentId: -1}).map (comment) ->
+			comment.createdAt = comment.createdAt.toString().substr(0, 10)
+			return comment
 }
 
 ###
