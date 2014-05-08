@@ -1,17 +1,24 @@
 <head>
 	<title>SAGDC Voting</title>
 	<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-	{{> navigation}}
+	<div class="site-container">
+		{{> navigation}}
 
-	{{#if currentUser}}
-		{{> themesContainer}}
-	{{else}}
-		{{#if loggingIn}}
-			<h1>Please wait, logging you in...</h1>
+		{{#if currentUser}}
+			<h1>SAGDC Themes</h1>
+			{{> themesContainer}}
 		{{else}}
-			<h1>Please log in!</h1>
+			{{#if loggingIn}}
+				<span class="fa fa-spinner fa-5x fa-spin"></span>
+				<br/>
+				Logging in...
+			{{else}}
+				<h1>Please log in!</h1>
+			{{/if}}
 		{{/if}}
-	{{/if}}
+	</div>
+
 </body>
