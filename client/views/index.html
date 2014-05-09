@@ -7,18 +7,18 @@
 	<div class="container">
 		{{> navigation}}
 
+		<h1>SAGDC 2014 Themes & Voting</h1>
 		{{#if currentUser}}
-			<h1>SAGDC 2014 Themes & Voting</h1>
-			{{> themesContainer}}
 		{{else}}
 			{{#if loggingIn}}
 				<span class="fa fa-spinner fa-5x fa-spin"></span>
 				<br/>
 				Logging in...
 			{{else}}
-				<h1>Please log in!</h1>
+				<div class="alert alert-info"><h2>Log in to add new theme ideas, vote, and comment.</h2></div>
 			{{/if}}
 		{{/if}}
+		{{> themesContainer}}
 	</div>
 
 </body>

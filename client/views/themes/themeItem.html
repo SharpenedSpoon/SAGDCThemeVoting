@@ -3,45 +3,50 @@
 	<div class="theme-item well well-sm">
 		<div class="theme">
 			<h4 class="theme-name">{{theme}}</h4>
-			{{#if userHasNotYetVoted}}
-				<h6 class="pull-left vote" id="voteForTheme">
-					<span class="fa fa-plus-circle"></span> Vote for this theme
-				</h6>
-			{{else}}
-				<h6 class="pull-left"><span class="fa fa-check-circle"></span></h6>
+
+			{{#if currentUser}}
+				{{#if userHasNotYetVoted}}
+					<h6 class="pull-left vote" id="voteForTheme">
+						<span class="fa fa-plus-circle"></span> Vote for this theme
+					</h6>
+				{{else}}
+					<h6 class="pull-left"><span class="fa fa-check-circle"></span></h6>
+				{{/if}}
+				<h6 class="pull-right">{{username}}</h6>
 			{{/if}}
-			<h6 class="pull-right">{{username}}</h6>
 		</div>
 		<div class="clear"></div>
 
 
+		{{#if currentUser}}
 
-		<div class="theme-extras">
+			<div class="theme-extras">
 
-			<details class="votes-list">
-				<summary>Votes: {{voteCount}}</summary>
-				{{#if voteCount}}
-					<ul>
-						{{#each votes}}
-							<li>{{username}}</li>
-						{{/each}}
-					</ul>
-				{{/if}}
-			</details>
+				<details class="votes-list">
+					<summary>Votes: {{voteCount}}</summary>
+					{{#if voteCount}}
+						<ul>
+							{{#each votes}}
+								<li>{{username}}</li>
+							{{/each}}
+						</ul>
+					{{/if}}
+				</details>
 
-			<details class="comments-list">
-				<summary>Comments: {{commentCount}}</summary>
-				{{> newComment}}
-				{{#if commentCount}}
-					<dl>
-						{{#each comments}}
-							<dt>{{username}} - <span data-livestamp="{{createdAt}}"></span></dt>
-							<dd>{{comment}}</dd>
-						{{/each}}
-					</dl>
-				{{/if}}
-			</details>
-		</div>
+				<details class="comments-list">
+					<summary>Comments: {{commentCount}}</summary>
+					{{> newComment}}
+					{{#if commentCount}}
+						<dl>
+							{{#each comments}}
+								<dt>{{username}} - <span data-livestamp="{{createdAt}}"></span></dt>
+								<dd>{{comment}}</dd>
+							{{/each}}
+						</dl>
+					{{/if}}
+				</details>
+			</div>
+		{{/if}}
 	</div>
 
 </template>
