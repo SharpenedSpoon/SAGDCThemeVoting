@@ -2,12 +2,14 @@
 
 	<div class="theme-item well well-sm">
 		<div class="theme">
+			<h4 class="theme-name">{{theme}}</h4>
 			{{#if userHasNotYetVoted}}
-				<h4 class="pull-left">
-					<span class="glyphicon glyphicon-plus-sign vote" id="voteForTheme" title="Vote for this theme"></span>
-				</h4>
+				<h6 class="pull-left vote" id="voteForTheme">
+					<span class="fa fa-plus-circle"></span> Vote for this theme
+				</h6>
+			{{else}}
+				<h6 class="pull-left"><span class="fa fa-check-circle"></span></h6>
 			{{/if}}
-			<h4 class="theme-name pull-left">{{theme}}</h4>
 			<h6 class="pull-right">{{username}}</h6>
 		</div>
 		<div class="clear"></div>

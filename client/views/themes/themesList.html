@@ -1,5 +1,9 @@
 <template name="themesList">
-	{{#each themes}}
-		{{> themeItem}}
-	{{/each}}
+	<div class="row themes-list">
+		{{#each themes}}
+			<div class="col-sm-4">
+				{{> themeItem}}
+			</div>
+		{{/each}}
+	</div>
 </template>
